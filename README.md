@@ -2,8 +2,6 @@
 
 Meridian HR is an employee operations workspace for people administration, attendance, leave approvals and monthly payroll. The interface has been rebuilt around a restrained, editorial operations style: warm neutral surfaces, charcoal navigation, clear data tables and muted terracotta accents.
 
-> **Upstream attribution:** This project is a substantially reworked derivative of [PulkitPradhan/PayTrace](https://github.com/PulkitPradhan/PayTrace). The original repository provided the payroll/attendance domain model and backend implementation reference. Meridian HR retains the central workflows while changing the product identity, interface, seed organisation and local configuration. The upstream repository does not include a visible license file; confirm reuse rights before redistributing beyond the intended academic or personal use.
-
 ## What is included
 
 - HR administrator and employee sign-in with role-aware navigation.
