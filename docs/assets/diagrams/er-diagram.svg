@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 750" width="100%" height="100%" style="background:#fdfcfb; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <defs>
+    <filter id="boxShadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-opacity="0.08" flood-color="#000000" />
+    </filter>
+  </defs>
+
+  <!-- Title -->
+  <text x="550" y="45" font-size="24" font-weight="700" fill="#1e2220" text-anchor="middle">Meridian HR — Entity Relationship Model (9 Normalized Tables)</text>
+  <text x="550" y="70" font-size="14" fill="#667069" text-anchor="middle">Relational Schema with Referential Integrity, Foreign Keys, and CHECK Constraints</text>
+
+  <!-- Table Macro Helper Simulation -->
+  <!-- 1. DEPARTMENTS -->
+  <g transform="translate(60, 110)" filter="url(#boxShadow)">
+    <rect width="200" height="130" rx="8" fill="#ffffff" stroke="#d5cfc9" stroke-width="1.5" />
+    <rect width="200" height="32" rx="8" fill="#2c302e" />
+    <rect y="24" width="200" height="8" fill="#2c302e" />
+    <text x="100" y="21" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">departments</text>
+    <text x="15" y="52" font-size="11" font-weight="700" fill="#c05a3e">PK</text><text x="40" y="52" font-size="11" fill="#2b302c">department_id INT</text>
+    <text x="15" y="72" font-size="11" font-weight="700" fill="#2b302c">UQ</text><text x="40" y="72" font-size="11" fill="#2b302c">department_name VARCHAR</text>
+    <text x="40" y="92" font-size="11" fill="#667069">description VARCHAR</text>
+    <text x="40" y="112" font-size="11" fill="#667069">created_at TIMESTAMP</text>
+  </g>
+
+  <!-- 2. EMPLOYEES -->
+  <g transform="translate(320, 110)" filter="url(#boxShadow)">
+    <rect width="240" height="230" rx="8" fill="#ffffff" stroke="#d5cfc9" stroke-width="1.5" />
+    <rect width="240" height="32" rx="8" fill="#2c302e" />
+    <rect y="24" width="240" height="8" fill="#2c302e" />
+    <text x="120" y="21" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">employees</text>
+    <text x="15" y="52" font-size="11" font-weight="700" fill="#c05a3e">PK</text><text x="40" y="52" font-size="11" fill="#2b302c">employee_id INT</text>
+    <text x="15" y="72" font-size="11" font-weight="700" fill="#2b302c">UQ</text><text x="40" y="72" font-size="11" fill="#2b302c">employee_code VARCHAR</text>
+    <text x="40" y="92" font-size="11" fill="#2b302c">first_name, last_name VARCHAR</text>
+    <text x="15" y="112" font-size="11" font-weight="700" fill="#2b302c">UQ</text><text x="40" y="112" font-size="11" fill="#2b302c">email VARCHAR</text>
+    <text x="15" y="132" font-size="11" font-weight="700" fill="#3b71ca">FK</text><text x="40" y="132" font-size="11" fill="#2b302c">department_id INT</text>
+    <text x="40" y="152" font-size="11" fill="#2b302c">designation VARCHAR</text>
+    <text x="40" y="172" font-size="11" fill="#c05a3e">role ENUM('HR_ADMIN','EMPLOYEE')</text>
+    <text x="40" y="192" font-size="11" fill="#667069">password_hash VARCHAR</text>
+    <text x="40" y="212" font-size="11" fill="#667069">status ENUM · hire_date</text>
+  </g>
+
+  <!-- 3. SALARY STRUCTURES -->
+  <g transform="translate(620, 110)" filter="url(#boxShadow)">
+    <rect width="220" height="210" rx="8" fill="#ffffff" stroke="#d5cfc9" stroke-width="1.5" />
+    <rect width="220" height="32" rx="8" fill="#2c302e" />
+    <rect y="24" width="220" height="8" fill="#2c302e" />
+    <text x="110" y="21" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">salary_structures</text>
+    <text x="15" y="52" font-size="11" font-weight="700" fill="#c05a3e">PK</text><text x="40" y="52" font-size="11" fill="#2b302c">salary_id INT</text>
+    <text x="15" y="72" font-size="11" font-weight="700" fill="#3b71ca">FK</text><text x="40" y="72" font-size="11" fill="#2b302c">employee_id INT</text>
+    <text x="40" y="92" font-size="11" fill="#2b302c">basic_salary DECIMAL(12,2)</text>
+    <text x="40" y="112" font-size="11" fill="#2b302c">hra DECIMAL(12,2)</text>
+    <text x="40" y="132" font-size="11" fill="#2b302c">special_allowance DECIMAL</text>
+    <text x="40" y="152" font-size="11" fill="#2b302c">provident_fund DECIMAL</text>
+    <text x="40" y="172" font-size="11" fill="#2b302c">professional_tax DECIMAL</text>
+    <text x="40" y="192" font-size="11" fill="#667069">effective_date DATE · is_active</text>
+  </g>
+
+  <!-- 4. ATTENDANCE -->
+  <g transform="translate(60, 420)" filter="url(#boxShadow)">
+    <rect width="220" height="200" rx="8" fill="#ffffff" stroke="#d5cfc9" stroke-width="1.5" />
+    <rect width="220" height="32" rx="8" fill="#2c302e" />
+    <rect y="24" width="220" height="8" fill="#2c302e" />
+    <text x="110" y="21" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">attendance</text>
+    <text x="15" y="52" font-size="11" font-weight="700" fill="#c05a3e">PK</text><text x="40" y="52" font-size="11" fill="#2b302c">attendance_id INT</text>
+    <text x="15" y="72" font-size="11" font-weight="700" fill="#3b71ca">FK</text><text x="40" y="72" font-size="11" fill="#2b302c">employee_id INT</text>
+    <text x="40" y="92" font-size="11" fill="#2b302c">work_date DATE (UQ)</text>
+    <text x="40" y="112" font-size="11" fill="#2b302c">status ENUM('PRESENT',...)</text>
+    <text x="40" y="132" font-size="11" fill="#2b302c">check_in_time TIME</text>
+    <text x="40" y="152" font-size="11" fill="#2b302c">check_out_time TIME</text>
+    <text x="40" y="172" font-size="11" fill="#c05a3e">is_late BOOLEAN · late_minutes</text>
+    <text x="40" y="192" font-size="11" fill="#667069">remarks VARCHAR</text>
+  </g>
+
+  <!-- 5. LEAVES -->
+  <g transform="translate(320, 420)" filter="url(#boxShadow)">
+    <rect width="220" height="200" rx="8" fill="#ffffff" stroke="#d5cfc9" stroke-width="1.5" />
+    <rect width="220" height="32" rx="8" fill="#2c302e" />
+    <rect y="24" width="220" height="8" fill="#2c302e" />
+    <text x="110" y="21" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">leaves</text>
+    <text x="15" y="52" font-size="11" font-weight="700" fill="#c05a3e">PK</text><text x="40" y="52" font-size="11" fill="#2b302c">leave_id INT</text>
+    <text x="15" y="72" font-size="11" font-weight="700" fill="#3b71ca">FK</text><text x="40" y="72" font-size="11" fill="#2b302c">employee_id INT</text>
+    <text x="40" y="92" font-size="11" fill="#2b302c">leave_type ENUM</text>
+    <text x="40" y="112" font-size="11" fill="#2b302c">start_date, end_date DATE</text>
+    <text x="40" y="132" font-size="11" fill="#2b302c">total_days DECIMAL(4,1)</text>
+    <text x="40" y="152" font-size="11" fill="#c05a3e">status ENUM('PENDING',...)</text>
+    <text x="15" y="172" font-size="11" font-weight="700" fill="#3b71ca">FK</text><text x="40" y="172" font-size="11" fill="#2b302c">actioned_by INT (EMP FK)</text>
+    <text x="40" y="192" font-size="11" fill="#667069">admin_remarks VARCHAR</text>
+  </g>
+
+  <!-- 6. PAYROLL PERIODS -->
+  <g transform="translate(580, 420)" filter="url(#boxShadow)">
+    <rect width="210" height="150" rx="8" fill="#ffffff" stroke="#d5cfc9" stroke-width="1.5" />
+    <rect width="210" height="32" rx="8" fill="#2c302e" />
+    <rect y="24" width="210" height="8" fill="#2c302e" />
+    <text x="105" y="21" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">payroll_periods</text>
+    <text x="15" y="52" font-size="11" font-weight="700" fill="#c05a3e">PK</text><text x="40" y="52" font-size="11" fill="#2b302c">period_id INT</text>
+    <text x="15" y="72" font-size="11" font-weight="700" fill="#2b302c">UQ</text><text x="40" y="72" font-size="11" fill="#2b302c">period_name VARCHAR</text>
+    <text x="40" y="92" font-size="11" fill="#2b302c">start_date, end_date DATE</text>
+    <text x="40" y="112" font-size="11" fill="#2b302c">total_working_days INT</text>
+    <text x="40" y="132" font-size="11" fill="#c05a3e">status ENUM('OPEN',...)</text>
+  </g>
+
+  <!-- 7. PAYROLLS -->
+  <g transform="translate(830, 360)" filter="url(#boxShadow)">
+    <rect width="220" height="250" rx="8" fill="#ffffff" stroke="#d5cfc9" stroke-width="1.5" />
+    <rect width="220" height="32" rx="8" fill="#2c302e" />
+    <rect y="24" width="220" height="8" fill="#2c302e" />
+    <text x="110" y="21" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">payrolls</text>
+    <text x="15" y="52" font-size="11" font-weight="700" fill="#c05a3e">PK</text><text x="40" y="52" font-size="11" fill="#2b302c">payroll_id INT</text>
+    <text x="15" y="72" font-size="11" font-weight="700" fill="#3b71ca">FK</text><text x="40" y="72" font-size="11" fill="#2b302c">employee_id INT</text>
+    <text x="15" y="92" font-size="11" font-weight="700" fill="#3b71ca">FK</text><text x="40" y="92" font-size="11" fill="#2b302c">period_id INT</text>
+    <text x="15" y="112" font-size="11" font-weight="700" fill="#3b71ca">FK</text><text x="40" y="112" font-size="11" fill="#2b302c">salary_id INT</text>
+    <text x="40" y="132" font-size="11" fill="#2b302c">present_days DECIMAL</text>
+    <text x="40" y="152" font-size="11" fill="#2b302c">unpaid_leave_days DECIMAL</text>
+    <text x="40" y="172" font-size="11" fill="#2b302c">gross_earnings DECIMAL</text>
+    <text x="40" y="192" font-size="11" fill="#2b302c">total_deductions DECIMAL</text>
+    <text x="40" y="212" font-size="11" font-weight="700" fill="#c05a3e">net_salary DECIMAL</text>
+    <text x="40" y="232" font-size="11" fill="#667069">payment_status ENUM</text>
+  </g>
+
+  <!-- 8. PAYROLL ITEMS -->
+  <g transform="translate(880, 110)" filter="url(#boxShadow)">
+    <rect width="180" height="150" rx="8" fill="#ffffff" stroke="#d5cfc9" stroke-width="1.5" />
+    <rect width="180" height="32" rx="8" fill="#2c302e" />
+    <rect y="24" width="180" height="8" fill="#2c302e" />
+    <text x="90" y="21" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">payroll_items</text>
+    <text x="15" y="52" font-size="11" font-weight="700" fill="#c05a3e">PK</text><text x="40" y="52" font-size="11" fill="#2b302c">item_id INT</text>
+    <text x="15" y="72" font-size="11" font-weight="700" fill="#3b71ca">FK</text><text x="40" y="72" font-size="11" fill="#2b302c">payroll_id INT</text>
+    <text x="40" y="92" font-size="11" fill="#c05a3e">item_type ENUM</text>
+    <text x="40" y="112" font-size="11" fill="#2b302c">item_name VARCHAR</text>
+    <text x="40" y="132" font-size="11" fill="#2b302c">amount DECIMAL(12,2)</text>
+  </g>
+
+  <!-- 9. AUDIT LOGS -->
+  <g transform="translate(580, 600)" filter="url(#boxShadow)">
+    <rect width="210" height="120" rx="8" fill="#ffffff" stroke="#d5cfc9" stroke-width="1.5" />
+    <rect width="210" height="28" rx="8" fill="#2c302e" />
+    <rect y="20" width="210" height="8" fill="#2c302e" />
+    <text x="105" y="18" font-size="12" font-weight="600" fill="#ffffff" text-anchor="middle">audit_logs</text>
+    <text x="15" y="46" font-size="11" font-weight="700" fill="#c05a3e">PK</text><text x="40" y="46" font-size="11" fill="#2b302c">log_id INT</text>
+    <text x="40" y="66" font-size="11" fill="#2b302c">table_name, record_id</text>
+    <text x="40" y="84" font-size="11" fill="#2b302c">action ENUM · old/new JSON</text>
+    <text x="15" y="104" font-size="11" font-weight="700" fill="#3b71ca">FK</text><text x="40" y="104" font-size="11" fill="#667069">actor_employee_id INT</text>
+  </g>
+
+  <!-- Connectors -->
+  <path d="M 260 170 L 320 170" stroke="#7d756f" stroke-width="2" />
+  <path d="M 560 170 L 620 170" stroke="#7d756f" stroke-width="2" />
+  <path d="M 400 340 L 400 420" stroke="#7d756f" stroke-width="2" />
+  <path d="M 440 340 L 170 420" stroke="#7d756f" stroke-width="2" />
+  <path d="M 940 360 L 940 260" stroke="#7d756f" stroke-width="2" />
+  <path d="M 790 490 L 830 490" stroke="#7d756f" stroke-width="2" />
+
+  <text x="550" y="735" font-size="12" fill="#a8a19b" text-anchor="middle">Entity-Relationship Diagram · 3NF Certified · Foreign Key Cascades &amp; Restricts Defined</text>
+</svg>

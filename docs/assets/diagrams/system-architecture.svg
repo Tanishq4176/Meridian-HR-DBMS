@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" width="100%" height="100%" style="background:#fdfcfb; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <defs>
+    <linearGradient id="gradTop" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2c302e" />
+      <stop offset="100%" stop-color="#3d4240" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.08" flood-color="#000000" />
+    </filter>
+  </defs>
+
+  <!-- Title -->
+  <text x="500" y="45" font-size="24" font-weight="700" fill="#1e2220" text-anchor="middle">Meridian HR — 3-Tier System Architecture</text>
+  <text x="500" y="70" font-size="14" fill="#667069" text-anchor="middle">Separation of Concerns: Browser Presentation, Express REST API, and Relational Database Engine</text>
+
+  <!-- Tier 1: Presentation Layer -->
+  <g transform="translate(60, 110)">
+    <rect width="260" height="430" rx="12" fill="#ffffff" stroke="#e3ded9" stroke-width="1.5" filter="url(#shadow)" />
+    <path d="M 0 12 Q 0 0 12 0 L 248 0 Q 260 0 260 12 L 260 48 L 0 48 Z" fill="url(#gradTop)" />
+    <text x="130" y="30" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">Presentation Tier</text>
+    
+    <!-- Components -->
+    <rect x="20" y="70" width="220" height="70" rx="8" fill="#f8f6f4" stroke="#e8e3df" />
+    <text x="130" y="98" font-size="14" font-weight="600" fill="#2b302c" text-anchor="middle">HTML5 Single Page App</text>
+    <text x="130" y="122" font-size="12" fill="#756f6b" text-anchor="middle">Editorial UI · No-build client</text>
+
+    <rect x="20" y="155" width="220" height="70" rx="8" fill="#f8f6f4" stroke="#e8e3df" />
+    <text x="130" y="183" font-size="14" font-weight="600" fill="#2b302c" text-anchor="middle">Vanilla JS Controller</text>
+    <text x="130" y="207" font-size="12" fill="#756f6b" text-anchor="middle">DOM rendering · REST fetch</text>
+
+    <rect x="20" y="240" width="220" height="70" rx="8" fill="#f8f6f4" stroke="#e8e3df" />
+    <text x="130" y="268" font-size="14" font-weight="600" fill="#2b302c" text-anchor="middle">Design System &amp; CSS</text>
+    <text x="130" y="292" font-size="12" fill="#756f6b" text-anchor="middle">Responsive · Print Payslips</text>
+
+    <rect x="20" y="325" width="220" height="75" rx="8" fill="#fbf0eb" stroke="#eedcd5" />
+    <text x="130" y="352" font-size="14" font-weight="600" fill="#c05a3e" text-anchor="middle">Role-Based Views</text>
+    <text x="130" y="373" font-size="12" fill="#6c6764" text-anchor="middle">HR Admin &amp; Staff portals</text>
+    <text x="130" y="390" font-size="11" fill="#99918c" text-anchor="middle">JWT token storage in localStorage</text>
+  </g>
+
+  <!-- Arrow 1 -> 2 -->
+  <g transform="translate(325, 300)">
+    <path d="M 0 0 L 40 0" stroke="#b0a8a0" stroke-width="2" marker-end="url(#arrow)" />
+    <text x="20" y="-12" font-size="11" fill="#7d756f" text-anchor="middle">JSON / REST</text>
+    <text x="20" y="22" font-size="10" fill="#99918c" text-anchor="middle">Bearer JWT</text>
+  </g>
+
+  <!-- Tier 2: Application Backend -->
+  <g transform="translate(370, 110)">
+    <rect width="260" height="430" rx="12" fill="#ffffff" stroke="#e3ded9" stroke-width="1.5" filter="url(#shadow)" />
+    <path d="M 0 12 Q 0 0 12 0 L 248 0 Q 260 0 260 12 L 260 48 L 0 48 Z" fill="url(#gradTop)" />
+    <text x="130" y="30" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">Application Tier (Node/Express)</text>
+
+    <rect x="20" y="70" width="220" height="70" rx="8" fill="#f8f6f4" stroke="#e8e3df" />
+    <text x="130" y="98" font-size="14" font-weight="600" fill="#2b302c" text-anchor="middle">Auth &amp; RBAC Middleware</text>
+    <text x="130" y="122" font-size="12" fill="#756f6b" text-anchor="middle">JWT verify · requireRole()</text>
+
+    <rect x="20" y="155" width="220" height="70" rx="8" fill="#f8f6f4" stroke="#e8e3df" />
+    <text x="130" y="183" font-size="14" font-weight="600" fill="#2b302c" text-anchor="middle">RESTful API Endpoints</text>
+    <text x="130" y="207" font-size="12" fill="#756f6b" text-anchor="middle">/attendance, /payroll, /leaves</text>
+
+    <rect x="20" y="240" width="220" height="70" rx="8" fill="#f8f6f4" stroke="#e8e3df" />
+    <text x="130" y="268" font-size="14" font-weight="600" fill="#2b302c" text-anchor="middle">MySQL2 Connection Pool</text>
+    <text x="130" y="292" font-size="12" fill="#756f6b" text-anchor="middle">Prepared Statements &amp; Escaping</text>
+
+    <rect x="20" y="325" width="220" height="75" rx="8" fill="#fbf0eb" stroke="#eedcd5" />
+    <text x="130" y="352" font-size="14" font-weight="600" fill="#c05a3e" text-anchor="middle">Transaction Controller</text>
+    <text x="130" y="373" font-size="12" fill="#6c6764" text-anchor="middle">Transaction commit/rollback</text>
+    <text x="130" y="390" font-size="11" fill="#99918c" text-anchor="middle">Exception handling &amp; status mapping</text>
+  </g>
+
+  <!-- Arrow 2 -> 3 -->
+  <g transform="translate(635, 300)">
+    <path d="M 0 0 L 40 0" stroke="#b0a8a0" stroke-width="2" />
+    <text x="20" y="-12" font-size="11" fill="#7d756f" text-anchor="middle">TCP / SQL</text>
+    <text x="20" y="22" font-size="10" fill="#99918c" text-anchor="middle">Port 3306</text>
+  </g>
+
+  <!-- Tier 3: Database Engine -->
+  <g transform="translate(680, 110)">
+    <rect width="260" height="430" rx="12" fill="#ffffff" stroke="#e3ded9" stroke-width="1.5" filter="url(#shadow)" />
+    <path d="M 0 12 Q 0 0 12 0 L 248 0 Q 260 0 260 12 L 260 48 L 0 48 Z" fill="url(#gradTop)" />
+    <text x="130" y="30" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">Database Tier (MySQL / MariaDB)</text>
+
+    <rect x="20" y="70" width="220" height="70" rx="8" fill="#f8f6f4" stroke="#e8e3df" />
+    <text x="130" y="98" font-size="14" font-weight="600" fill="#2b302c" text-anchor="middle">9 Normalized Tables</text>
+    <text x="130" y="122" font-size="12" fill="#756f6b" text-anchor="middle">InnoDB · 3NF/BCNF Schema</text>
+
+    <rect x="20" y="155" width="220" height="70" rx="8" fill="#f8f6f4" stroke="#e8e3df" />
+    <text x="130" y="183" font-size="14" font-weight="600" fill="#2b302c" text-anchor="middle">Stored Routines &amp; Triggers</text>
+    <text x="130" y="207" font-size="12" fill="#756f6b" text-anchor="middle">sp_calculate_payroll · Overlap audit</text>
+
+    <rect x="20" y="240" width="220" height="70" rx="8" fill="#f8f6f4" stroke="#e8e3df" />
+    <text x="130" y="268" font-size="14" font-weight="600" fill="#2b302c" text-anchor="middle">Integrity &amp; Guardrails</text>
+    <text x="130" y="292" font-size="12" fill="#756f6b" text-anchor="middle">FKs · Unique keys · CHECK constraints</text>
+
+    <rect x="20" y="325" width="220" height="75" rx="8" fill="#fbf0eb" stroke="#eedcd5" />
+    <text x="130" y="352" font-size="14" font-weight="600" fill="#c05a3e" text-anchor="middle">Audit Logs &amp; Indexes</text>
+    <text x="130" y="373" font-size="12" fill="#6c6764" text-anchor="middle">JSON audit trails</text>
+    <text x="130" y="390" font-size="11" fill="#99918c" text-anchor="middle">Composite B-Tree query indexes</text>
+  </g>
+
+  <!-- Footer watermark -->
+  <text x="500" y="575" font-size="12" fill="#a8a19b" text-anchor="middle">Meridian HR · Relational Database Management System Project</text>
+</svg>

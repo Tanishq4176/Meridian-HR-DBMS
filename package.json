@@ -8,7 +8,8 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "node src/server.js",
-    "test": "node tests/smoke.js",
+    "test": "node tests/test_suite.js",
+    "test:smoke": "node tests/smoke.js",
     "setup": "node scripts/run-sql.js setup",
     "seed": "node scripts/run-sql.js seed"
   },
