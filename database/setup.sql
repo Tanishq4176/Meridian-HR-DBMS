@@ -1,0 +1,13 @@
+CREATE DATABASE IF NOT EXISTS meridian_hr CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE meridian_hr;
+SELECT 'Loading relational schema' AS progress;
+SOURCE database/schema.sql;
+SELECT 'Loading stored functions' AS progress;
+SOURCE database/functions.sql;
+SELECT 'Loading attendance and audit triggers' AS progress;
+SOURCE database/triggers.sql;
+SELECT 'Loading payroll procedures' AS progress;
+SOURCE database/procedures.sql;
+SELECT 'Loading sample organisation' AS progress;
+SOURCE database/seed.sql;
+SELECT 'Meridian HR database is ready.' AS status;

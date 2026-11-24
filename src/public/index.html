@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#262a26">
+  <meta name="description" content="Meridian HR — employee operations, attendance and payroll management.">
+  <title>Meridian HR — People operations</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <section id="auth-screen" class="auth-screen">
+    <div class="auth-story">
+      <div class="brand brand-light">
+        <span class="brand-mark">M</span>
+        <span class="brand-name">meridian<span>hr</span></span>
+      </div>
+      <div class="auth-story-copy">
+        <p class="eyebrow eyebrow-light">PEOPLE OPERATIONS, IN ONE PLACE</p>
+        <h1>Good work starts<br>with <em>good people.</em></h1>
+        <p class="auth-story-text">A considered workspace for the everyday work behind a healthy organisation — from attendance to payroll.</p>
+      </div>
+      <div class="auth-story-foot">
+        <span>PEOPLE · TIME · PAY</span>
+        <span>EST. 2026</span>
+      </div>
+    </div>
+    <div class="auth-panel">
+      <div class="auth-topline"><span>MERIDIAN WORKSPACE</span><span>SECURE SIGN IN</span></div>
+      <form id="login-form" class="login-card">
+        <p class="eyebrow">WELCOME BACK</p>
+        <h2>Sign in to your account</h2>
+        <p class="muted login-intro">Use your work email and password to continue.</p>
+        <label for="login-email">Work email</label>
+        <input id="login-email" type="email" autocomplete="username" placeholder="you@company.com" required>
+        <label for="login-password">Password</label>
+        <input id="login-password" type="password" autocomplete="current-password" placeholder="Enter your password" required>
+        <p id="login-error" class="form-error" role="alert"></p>
+        <button class="button button-dark button-wide" type="submit">Continue <span aria-hidden="true">→</span></button>
+        <div class="demo-access">
+          <div class="demo-heading"><span>DEMO ACCESS</span><span>FOR EVALUATION</span></div>
+          <button type="button" class="demo-account" data-email="alice.morgan@meridian.local" data-password="Admin123!">
+            <span><strong>HR administrator</strong><small>alice.morgan@meridian.local</small></span><span>Use account →</span>
+          </button>
+          <button type="button" class="demo-account" data-email="sarah.jenkins@meridian.local" data-password="Employee123!">
+            <span><strong>Employee</strong><small>sarah.jenkins@meridian.local</small></span><span>Use account →</span>
+          </button>
+        </div>
+      </form>
+      <p class="auth-legal">By continuing, you agree to your organisation’s internal access policy.</p>
+    </div>
+  </section>
+
+  <div id="app-container" class="app-shell" hidden>
+    <aside class="sidebar">
+      <div class="sidebar-brand brand brand-light">
+        <span class="brand-mark">M</span><span class="brand-name">meridian<span>hr</span></span>
+      </div>
+      <div class="workspace-switcher">
+        <div class="workspace-avatar">N</div>
+        <div class="workspace-meta"><strong>Northstar Studio</strong><small>Workspace</small></div>
+        <span class="workspace-chevron">⌄</span>
+      </div>
+      <div class="nav-label">WORKSPACE</div>
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <button class="nav-link active" data-view="overview"><span class="nav-icon">▦</span><span>Overview</span></button>
+        <div id="hr-nav-group">
+          <button class="nav-link" data-view="people"><span class="nav-icon">♙</span><span>People</span><span class="nav-count" id="people-nav-count">—</span></button>
+          <button class="nav-link" data-view="attendance"><span class="nav-icon">◷</span><span>Attendance</span></button>
+          <button class="nav-link" data-view="leaves"><span class="nav-icon">▤</span><span>Leave requests</span><span class="nav-count nav-count-alert" id="leave-nav-count">0</span></button>
+          <button class="nav-link" data-view="payroll"><span class="nav-icon">₹</span><span>Payroll</span></button>
+          <button class="nav-link" data-view="reports"><span class="nav-icon">▥</span><span>Reports</span></button>
+          <button class="nav-link" data-view="audit"><span class="nav-icon">⌕</span><span>Audit trail</span></button>
+        </div>
+        <div id="employee-nav-group" hidden>
+          <button class="nav-link" data-view="attendance"><span class="nav-icon">◷</span><span>My attendance</span></button>
+          <button class="nav-link" data-view="leaves"><span class="nav-icon">▤</span><span>My leave</span></button>
+          <button class="nav-link" data-view="payslips"><span class="nav-icon">₹</span><span>Pay statements</span></button>
+        </div>
+      </nav>
+      <div class="sidebar-spacer"></div>
+      <div class="sidebar-bottom">
+        <div class="help-note"><span class="help-note-mark">i</span><div><strong>Need a hand?</strong><small>Contact your people team</small></div></div>
+        <div class="user-menu">
+          <div class="user-avatar" id="nav-avatar">AM</div>
+          <div class="user-meta"><strong id="nav-user-name">Alice Morgan</strong><small id="nav-user-role">HR ADMIN</small></div>
+          <button id="logout-button" class="logout-button" aria-label="Sign out" title="Sign out">↗</button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <div class="crumbs"><span>Northstar Studio</span><span class="crumb-separator">/</span><strong id="page-crumb">Overview</strong></div>
+        <div class="topbar-actions">
+          <span id="today-label" class="topbar-date"></span>
+          <span class="topbar-divider"></span>
+          <button class="topbar-icon" id="refresh-button" title="Refresh data" aria-label="Refresh data">↻</button>
+          <div class="topbar-avatar" id="topbar-avatar">AM</div>
+        </div>
+      </header>
+
+      <div class="page-wrap">
+        <section id="view-overview" class="view-section active">
+          <div class="page-heading page-heading-dashboard">
+            <div><p class="eyebrow" id="dash-eyebrow">TUESDAY, 24 NOVEMBER 2026</p><h1 id="dash-greeting">Good afternoon, Alice.</h1><p class="page-subtitle" id="dash-subtitle">Here’s what is happening across your organisation today.</p></div>
+            <div class="heading-actions" id="dash-actions"><button class="button button-outline" id="quick-leave-button">Review leave</button><button class="button button-primary" id="quick-add-person">+ Add person</button></div>
+          </div>
+
+          <div class="metric-grid" id="hr-metrics">
+            <article class="metric-card"><div class="metric-top"><span>ACTIVE PEOPLE</span><span class="metric-symbol">♙</span></div><div class="metric-value" id="metric-people">—</div><div class="metric-foot"><span class="metric-note" id="metric-departments">Across all departments</span><span class="metric-accent">People</span></div></article>
+            <article class="metric-card"><div class="metric-top"><span>ATTENDANCE TODAY</span><span class="metric-symbol">◷</span></div><div class="metric-value" id="metric-attendance">—</div><div class="metric-foot"><span class="metric-note" id="metric-attendance-note">Latest available records</span><span class="metric-accent">Today</span></div></article>
+            <article class="metric-card"><div class="metric-top"><span>LEAVE TO REVIEW</span><span class="metric-symbol">▤</span></div><div class="metric-value" id="metric-leaves">—</div><div class="metric-foot"><span class="metric-note">Awaiting a decision</span><span class="metric-accent">Pending</span></div></article>
+            <article class="metric-card"><div class="metric-top"><span>PAYROLL CYCLES</span><span class="metric-symbol">₹</span></div><div class="metric-value" id="metric-payroll">—</div><div class="metric-foot"><span class="metric-note" id="metric-payroll-note">Available pay periods</span><span class="metric-accent">Finance</span></div></article>
+          </div>
+
+          <div id="employee-overview" class="employee-overview" hidden>
+            <article class="employee-welcome-card"><p class="eyebrow eyebrow-light">YOUR WORKSPACE</p><h2 id="employee-welcome-title">Your work, in view.</h2><p>Check your attendance, review leave requests and find your latest pay statements.</p><button id="employee-clock-button" class="button button-light">Record attendance <span>→</span></button></article>
+            <article class="metric-card employee-stat"><div class="metric-top"><span>YOUR PAY STATEMENTS</span><span class="metric-symbol">₹</span></div><div class="metric-value" id="employee-pay-count">—</div><div class="metric-foot"><span class="metric-note">Available records</span></div></article>
+            <article class="metric-card employee-stat"><div class="metric-top"><span>LEAVE REQUESTS</span><span class="metric-symbol">▤</span></div><div class="metric-value" id="employee-leave-count">—</div><div class="metric-foot"><span class="metric-note">Submitted by you</span></div></article>
+          </div>
+
+          <div class="dashboard-grid" id="hr-dashboard-grid">
+            <article class="panel payroll-panel">
+              <div class="panel-heading"><div><p class="eyebrow">FINANCE OVERVIEW</p><h2>Payroll cycles</h2></div><button class="text-button" data-open-view="payroll">View payroll →</button></div>
+              <div class="table-wrap"><table><thead><tr><th>PAY PERIOD</th><th>DATE RANGE</th><th>WORKING DAYS</th><th>STATUS</th><th></th></tr></thead><tbody id="dash-payroll-body"><tr><td colspan="5" class="empty-cell">Loading payroll periods…</td></tr></tbody></table></div>
+            </article>
+            <article class="panel people-panel">
+              <div class="panel-heading"><div><p class="eyebrow">YOUR ORGANISATION</p><h2>People by team</h2></div><button class="text-button" data-open-view="people">Directory →</button></div>
+              <div id="department-breakdown" class="department-breakdown"><p class="muted">Loading teams…</p></div>
+            </article>
+            <article class="panel attention-panel">
+              <div class="panel-heading"><div><p class="eyebrow">NEEDS ATTENTION</p><h2>Pending requests</h2></div><span class="panel-count" id="pending-panel-count">0</span></div>
+              <div id="pending-preview" class="pending-preview"><p class="muted">Loading requests…</p></div>
+              <button class="button button-outline button-wide" data-open-view="leaves">Open leave inbox</button>
+            </article>
+            <article class="panel attendance-panel">
+              <div class="panel-heading"><div><p class="eyebrow">LATEST RECORDS</p><h2>Attendance activity</h2></div><button class="text-button" data-open-view="attendance">See all →</button></div>
+              <div id="attendance-preview" class="activity-list"><p class="muted">Loading attendance…</p></div>
+            </article>
+          </div>
+          <div id="employee-dashboard-lower" class="dashboard-grid employee-dashboard-lower" hidden>
+            <article class="panel"><div class="panel-heading"><div><p class="eyebrow">YOUR RECORD</p><h2>Recent attendance</h2></div><button class="text-button" data-open-view="attendance">View history →</button></div><div id="employee-attendance-preview" class="activity-list"></div></article>
+            <article class="panel"><div class="panel-heading"><div><p class="eyebrow">PAY & BENEFITS</p><h2>Recent pay statements</h2></div><button class="text-button" data-open-view="payslips">View all →</button></div><div id="employee-payslip-preview" class="activity-list"></div></article>
+          </div>
+        </section>
+
+        <section id="view-people" class="view-section">
+          <div class="page-heading"><div><p class="eyebrow">DIRECTORY</p><h1>People</h1><p class="page-subtitle">The people who make the organisation work.</p></div><button class="button button-primary" id="add-person-button">+ Add person</button></div>
+          <div class="toolbar"><div class="search-field"><span>⌕</span><input id="people-search" type="search" placeholder="Search by name, code or department"></div><span class="toolbar-meta" id="people-count-label">Loading people…</span></div>
+          <article class="panel table-panel"><div class="table-wrap"><table><thead><tr><th>PERSON</th><th>EMPLOYEE ID</th><th>DEPARTMENT</th><th>DESIGNATION</th><th>EMPLOYMENT</th><th>MONTHLY GROSS</th><th>STATUS</th></tr></thead><tbody id="employees-table-body"><tr><td colspan="7" class="empty-cell">Loading people…</td></tr></tbody></table></div></article>
+        </section>
+
+        <section id="view-attendance" class="view-section">
+          <div class="page-heading"><div><p class="eyebrow">TIME & PRESENCE</p><h1 id="attendance-page-title">Attendance</h1><p class="page-subtitle">A clear record of daily check-ins and working time.</p></div><div class="heading-actions"><button class="button button-outline" id="attendance-export">Export CSV</button><button class="button button-primary" id="attendance-clock-button" hidden>Record attendance</button></div></div>
+          <div class="toolbar"><div class="search-field"><span>⌕</span><input id="attendance-search" type="search" placeholder="Search people or employee ID"></div><select id="attendance-period-filter" class="select-control"><option value="">All available dates</option></select><span class="toolbar-meta" id="attendance-count-label">— records</span></div>
+          <article class="panel table-panel"><div class="table-wrap"><table><thead><tr><th>WORK DATE</th><th>PERSON</th><th>DEPARTMENT</th><th>STATUS</th><th>CHECK IN</th><th>CHECK OUT</th><th>TIMEKEEPING</th></tr></thead><tbody id="attendance-table-body"><tr><td colspan="7" class="empty-cell">Loading attendance…</td></tr></tbody></table></div></article>
+        </section>
+
+        <section id="view-leaves" class="view-section">
+          <div class="page-heading"><div><p class="eyebrow">TIME AWAY</p><h1 id="leave-page-title">Leave requests</h1><p class="page-subtitle">Review time-off requests and keep the team calendar up to date.</p></div><button class="button button-primary" id="apply-leave-button" hidden>+ Request leave</button></div>
+          <div class="toolbar"><div class="search-field"><span>⌕</span><input id="leave-search" type="search" placeholder="Search by name or leave type"></div><select id="leave-status-filter" class="select-control"><option value="">All requests</option><option value="PENDING">Pending</option><option value="APPROVED">Approved</option><option value="REJECTED">Rejected</option></select><span class="toolbar-meta" id="leave-count-label">— requests</span></div>
+          <article class="panel table-panel"><div class="table-wrap"><table><thead><tr><th>PERSON</th><th>TYPE</th><th>DATES</th><th>DAYS</th><th>REASON</th><th>STATUS</th><th>REVIEWED BY</th><th></th></tr></thead><tbody id="leaves-table-body"><tr><td colspan="8" class="empty-cell">Loading requests…</td></tr></tbody></table></div></article>
+        </section>
+
+        <section id="view-payroll" class="view-section">
+          <div class="page-heading"><div><p class="eyebrow">COMPENSATION</p><h1>Payroll</h1><p class="page-subtitle">Review payroll results and process monthly pay cycles.</p></div><button class="button button-primary" id="run-payroll-button">Process payroll</button></div>
+          <div class="toolbar"><label class="filter-label" for="payroll-period-select">PAY PERIOD</label><select id="payroll-period-select" class="select-control"></select><span class="toolbar-meta" id="payroll-count-label">— records</span></div>
+          <div class="payroll-summary-grid"><article class="metric-card"><div class="metric-top"><span>GROSS PAYROLL</span><span class="metric-symbol">₹</span></div><div class="metric-value" id="payroll-gross-total">—</div><div class="metric-foot"><span class="metric-note">Selected period</span></div></article><article class="metric-card"><div class="metric-top"><span>TOTAL DEDUCTIONS</span><span class="metric-symbol">−</span></div><div class="metric-value" id="payroll-deduction-total">—</div><div class="metric-foot"><span class="metric-note">All listed employees</span></div></article><article class="metric-card"><div class="metric-top"><span>NET PAY</span><span class="metric-symbol">₹</span></div><div class="metric-value" id="payroll-net-total">—</div><div class="metric-foot"><span class="metric-note">After deductions</span></div></article></div>
+          <article class="panel table-panel"><div class="panel-heading panel-heading-table"><div><p class="eyebrow">PAY RUN</p><h2>Employee payroll</h2></div><span class="muted" id="payroll-period-status"></span></div><div class="table-wrap"><table><thead><tr><th>PERSON</th><th>DEPARTMENT</th><th>ATTENDANCE</th><th>GROSS</th><th>DEDUCTIONS</th><th>NET PAY</th><th>STATUS</th><th></th></tr></thead><tbody id="payroll-admin-table-body"><tr><td colspan="8" class="empty-cell">Select a period to view payroll…</td></tr></tbody></table></div></article>
+        </section>
+
+        <section id="view-payslips" class="view-section">
+          <div class="page-heading"><div><p class="eyebrow">YOUR COMPENSATION</p><h1>Pay statements</h1><p class="page-subtitle">Your monthly earnings and deductions, in one place.</p></div></div>
+          <article class="panel table-panel"><div class="table-wrap"><table><thead><tr><th>PAY PERIOD</th><th>DATE RANGE</th><th>ATTENDANCE</th><th>GROSS PAY</th><th>DEDUCTIONS</th><th>NET PAY</th><th>STATUS</th><th></th></tr></thead><tbody id="my-payslips-body"><tr><td colspan="8" class="empty-cell">Loading pay statements…</td></tr></tbody></table></div></article>
+        </section>
+
+        <section id="view-reports" class="view-section">
+          <div class="page-heading"><div><p class="eyebrow">ORGANISATION INSIGHTS</p><h1>Reports</h1><p class="page-subtitle">Attendance, punctuality and payroll by department.</p></div><button class="button button-outline" id="report-export">Export current report</button></div>
+          <div class="report-controls"><label for="report-period-select">REPORTING PERIOD</label><select id="report-period-select" class="select-control"></select></div>
+          <div class="report-tabs"><button class="report-tab active" data-report="rep-attendance">Attendance summary</button><button class="report-tab" data-report="rep-late">Late arrivals</button><button class="report-tab" data-report="rep-dept">Department payroll</button></div>
+          <article class="panel table-panel report-view active" id="rep-attendance"><div class="panel-heading panel-heading-table"><div><p class="eyebrow">PEOPLE & TIME</p><h2>Attendance summary</h2></div></div><div class="table-wrap"><table><thead><tr><th>EMPLOYEE ID</th><th>PERSON</th><th>DEPARTMENT</th><th>WORK DAYS</th><th>PRESENT</th><th>ABSENT</th><th>ON LEAVE</th><th>LATE MARKS</th><th>ATTENDANCE</th></tr></thead><tbody id="rep-attendance-body"><tr><td colspan="9" class="empty-cell">Loading report…</td></tr></tbody></table></div></article>
+          <article class="panel table-panel report-view" id="rep-late" hidden><div class="panel-heading panel-heading-table"><div><p class="eyebrow">TIMEKEEPING</p><h2>Late arrivals</h2></div></div><div class="table-wrap"><table><thead><tr><th>PERSON</th><th>DEPARTMENT</th><th>DATE</th><th>CHECK IN</th><th>MINUTES LATE</th><th>REMARKS</th></tr></thead><tbody id="rep-late-body"><tr><td colspan="6" class="empty-cell">Select a period…</td></tr></tbody></table></div></article>
+          <article class="panel table-panel report-view" id="rep-dept" hidden><div class="panel-heading panel-heading-table"><div><p class="eyebrow">COMPENSATION</p><h2>Department payroll</h2></div></div><div class="table-wrap"><table><thead><tr><th>DEPARTMENT</th><th>PEOPLE PAID</th><th>GROSS PAY</th><th>DEDUCTIONS</th><th>NET DISBURSED</th><th>AVERAGE NET</th></tr></thead><tbody id="rep-dept-body"><tr><td colspan="6" class="empty-cell">Select a period…</td></tr></tbody></table></div></article>
+        </section>
+
+        <section id="view-audit" class="view-section">
+          <div class="page-heading"><div><p class="eyebrow">ACCOUNTABILITY</p><h1>Audit trail</h1><p class="page-subtitle">A chronological record of key payroll and compensation changes.</p></div></div>
+          <div class="toolbar"><span class="toolbar-meta" id="audit-count-label">Latest 100 events</span><span class="toolbar-meta">Visible to HR administrators</span></div>
+          <article class="panel table-panel"><div class="table-wrap"><table><thead><tr><th>EVENT</th><th>DATE & TIME</th><th>RECORD</th><th>RECORD ID</th><th>ACTION</th><th>PERFORMED BY</th><th>DETAILS</th></tr></thead><tbody id="audit-table-body"><tr><td colspan="7" class="empty-cell">Loading audit records…</td></tr></tbody></table></div></article>
+        </section>
+        <footer class="page-footer"><span>MERIDIAN HR · PEOPLE OPERATIONS</span><span>INTERNAL WORKSPACE</span></footer>
+      </div>
+    </main>
+  </div>
+
+  <div id="modal-backdrop" class="modal-backdrop" hidden>
+    <section id="modal" class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-heading"><div><p class="eyebrow" id="modal-eyebrow">WORKSPACE</p><h2 id="modal-title">Details</h2></div><button class="modal-close" id="modal-close" aria-label="Close">×</button></div>
+      <div id="modal-content"></div>
+    </section>
+  </div>
+  <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+  <script src="/js/app.js" defer></script>
+</body>
+</html>

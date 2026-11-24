@@ -1,0 +1,2 @@
+-- All operational indexes are created with their tables in schema.sql.
+-- Keep this file as a reference point for optional future index tuning.
